@@ -29,3 +29,22 @@
 		$art=dbQuery($sql, $fields);
 		return true;
 	}
+
+	function validateArticle(array &$fields) : array{
+		$errors[]="";
+
+		if(mb_strlen($fields['title'], "UTF-8") < 5)
+		$errors[]="Название не короче 5 символов";
+
+		if(mb_strlen($fields['description'], "UTF-8") < 10)
+		$errors[]="Описание не короче 10 символов";
+
+		if(!is_numeric($fields['id_cat']))
+		$errors[]="ID категории не число";
+
+		$fields['title']=htmlspecialchars($fields['title']);
+		$fields['description']=htmlspecialchars($fields['description']);
+
+		return $errors;
+	}
+

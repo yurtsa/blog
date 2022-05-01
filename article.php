@@ -1,10 +1,9 @@
 <?php
 
-include_once('functions.php');
+include_once('core/functions.php');
 include_once('model/db.php');
 include_once('model/articles.php');
 saveLog();	
-
 
 
 	$fields['id_article']=(int)($_GET['id'] ?? '');

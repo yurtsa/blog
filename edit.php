@@ -1,7 +1,8 @@
 <?php
 $isSave=false;
 
-include_once('functions.php');
+include_once('core/logs.php');
+include_once('core/arr.php');
 include_once('model/db.php');
 include_once('model/articles.php');
 include_once('model/cats.php');
@@ -19,6 +20,7 @@ saveLog();
 				$idurl=$fields['id_article'];
 				saveArticle($fields);
 				header("location: article.php?id=$idurl");
+				exit();
 				}
 
 			}
