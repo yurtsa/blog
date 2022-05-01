@@ -1,15 +1,17 @@
 <?php
 include_once('core/logs.php');
 include_once('core/arr.php');
+include_once('core/system.php');
 include_once('model/db.php');
 include_once('model/articles.php');
 include_once('model/cats.php');
+
 saveLog();
 
-$cname=$_GET['c'] ?? 'index';
+$cname=$_GET['c'] ?? 'index'; #проверка controller
 $path="controllers/$cname.php";
 
-    if(file_exists($path)){
+    if(checkControllerName($cname) && file_exists($path)){
         include_once($path);
     }else
     {
