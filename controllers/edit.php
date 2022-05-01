@@ -1,13 +1,4 @@
 <?php
-$isSave=false;
-
-include_once('core/logs.php');
-include_once('core/arr.php');
-include_once('model/db.php');
-include_once('model/articles.php');
-include_once('model/cats.php');
-saveLog();
-
 
 	if($_SERVER['REQUEST_METHOD']==='POST'){
 		$fields=extractFields($_POST, ['title', 'description', 'id_cat', 'id_article']);
@@ -15,7 +6,7 @@ saveLog();
 		if(count($validateErrors)==1){
 		saveArticle($fields);
 		$idurl=$fields['id_article'];
-		header("location: article.php?id=$idurl");
+		header("location: index.php?c=article&id=$idurl");
 		exit();
 		}	
 

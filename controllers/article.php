@@ -1,13 +1,5 @@
 <?php
 
-include_once('core/logs.php');
-include_once('core/arr.php');
-include_once('model/db.php');
-include_once('model/articles.php');
-include_once('model/cats.php');
-saveLog();	
-
-
 	if(is_numeric($_GET['id'])){
 		$fileds['id_article']=$_GET['id'];
 		$article = getArticle($fileds); 
