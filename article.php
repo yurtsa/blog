@@ -1,25 +1,29 @@
 <?php
 
-include_once('core/functions.php');
+include_once('core/logs.php');
+include_once('core/arr.php');
 include_once('model/db.php');
 include_once('model/articles.php');
+include_once('model/cats.php');
 saveLog();	
 
 
-	$fields['id_article']=(int)($_GET['id'] ?? '');
-	$article = getArticle($fields);
+	if(is_numeric($_GET['id'])){
+		$fileds['id_article']=$_GET['id'];
+		$article = getArticle($fileds); 
+		if(empty($article))
+		{
+			header("HTTP/1.1 404 Not Found");
+			header("location: 404.php");
+			exit();			
+		}
+	}
+	else
+	{
+		header("HTTP/1.1 404 Not Found");
+		header("location: 404.php");
+		exit();	
+	}
 
-?>
-<div class="content">
 
-		<div class="article">
-			<h1><?=$article[0]['title']?></h1>
-			<div><?=$article[0]['description']?></div>
-			<div><?=$article[0]['dt']?></div>
-			<hr>
-			<a href="delete.php?id=<?=$article[0]['id_article']?>">Remove</a>
-		</div>
-
-</div>
-<hr>
-<a href="index.php">Move to main page</a>
+include("views/v_article.php");

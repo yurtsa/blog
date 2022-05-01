@@ -1,5 +1,9 @@
 <?php
-	include_once('functions.php');
+include_once('core/logs.php');
+include_once('core/arr.php');
+include_once('model/db.php');
+include_once('model/articles.php');
+include_once('model/cats.php');
 ?>
 
 <a href="index.php">Move to main page</a>

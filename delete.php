@@ -1,23 +1,21 @@
 <?php
-include_once('functions.php');
+include_once('core/logs.php');
+include_once('core/arr.php');
 include_once('model/db.php');
 include_once('model/articles.php');
+include_once('model/cats.php');
 saveLog();	
 
-$isDel=false;
-$err='';
 
-	if(isset($_GET['id']))
-	{
-		$fields['id_article']=(int)$_GET['id'];
-		removeArticle($fields);
-		$isDel=true;
-	}
-?>
-<? if($isDel): ?>
-<p>Статья удалена</p>
-<? else: ?>
-<p>Не задан ID статьи</p>
-<? endif; ?>
-<hr>
-<a href="index.php">Move to main page</a>
+
+if(is_numeric($_GET['id'])){
+	$fields['id_article']=$_GET['id'];
+	removeArticle($fields);
+	header("location: index.php");
+}
+else
+{
+	header("HTTP/1.1 404 Not Found");
+	header("location: 404.php");
+	exit();	
+}

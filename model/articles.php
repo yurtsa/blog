@@ -42,6 +42,9 @@
 		if(!is_numeric($fields['id_cat']))
 		$errors[]="ID категории не число";
 
+		if(isset($fields['id_article']) && !is_numeric($fields['id_article']))
+		$errors[]="ID статьи не число";
+
 		$fields['title']=htmlspecialchars($fields['title']);
 		$fields['description']=htmlspecialchars($fields['description']);
 
