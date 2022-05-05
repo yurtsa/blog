@@ -8,6 +8,7 @@ include_once('model/cats.php');
 
 saveLog();
 #проверка гита с другого компа
+
 $cname=$_GET['c'] ?? 'index'; #проверка controller
 $path="controllers/$cname.php";
 
