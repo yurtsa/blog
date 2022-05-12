@@ -7,7 +7,7 @@ include_once('model/articles.php');
 include_once('model/cats.php');
 
 saveLog();
-#проверка гита с другого компа
+#проверка гита с другого компа 2
 
 $cname=$_GET['c'] ?? 'index'; #проверка controller
 $path="controllers/$cname.php";
